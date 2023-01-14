@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mur
   - Enemy
+  - Spawn
   layers:
   - Default
   - TransparentFX
