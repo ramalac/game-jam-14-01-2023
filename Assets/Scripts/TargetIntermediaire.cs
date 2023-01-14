@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Decalage : MonoBehaviour
+public class TargetIntermediaire : MonoBehaviour
 {
-
-   public GameObject[] TargetContour;
+    public Transform TargetPlayer;
+    public Decalage ScriptDecalage;
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -18,12 +19,11 @@ public class Decalage : MonoBehaviour
 
     }
 
-
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<MoveToTarget>().ChangeTarget(TargetContour);
+            other.gameObject.GetComponent<MoveToTarget>().ChangeTarget(TargetPlayer);
         }
     }
 }
