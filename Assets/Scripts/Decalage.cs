@@ -18,10 +18,14 @@ public class Decalage : MonoBehaviour
 
     }
 
+    public GameObject[] GetTargetContour()
+    {
+        return TargetContour;
+    }
 
     public void OnTriggerEnter(Collider other)
     {
-        GiveTargetContour(other.gameObject);
+        //GiveTargetContour(other.gameObject);
     }
 
     public void GiveTargetContour(GameObject g)

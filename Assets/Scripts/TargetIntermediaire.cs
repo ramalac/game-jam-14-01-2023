@@ -24,6 +24,7 @@ public class TargetIntermediaire : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<MoveToTarget>().ChangeTarget(TargetPlayer);
+            //other.gameObject.GetComponent<MoveToTarget>()._procheMur = false;
         }
     }
 }

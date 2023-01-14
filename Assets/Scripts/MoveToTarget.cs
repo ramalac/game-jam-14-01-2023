@@ -15,6 +15,7 @@ public class MoveToTarget : MonoBehaviour
 
     private Rigidbody _rb;
 
+    public bool _procheMur = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +27,14 @@ public class MoveToTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Direction = Target.transform.position - transform.position;
-        Direction.Normalize();
+        //if (!_procheMur)
+        //    CalculTarget();
+
+        if (Target != null)
+        {
+            Direction = Target.transform.position - transform.position;
+            Direction.Normalize();
+        }
     }
 
     private void FixedUpdate()
@@ -35,6 +42,45 @@ public class MoveToTarget : MonoBehaviour
         //VelocityForce = _rb.velocity;
         VelocityForce = Direction * Speed;
         _rb.velocity = VelocityForce;
+    }
+
+    private void CalculTarget()
+    {
+        Vector3 startPoint = transform.position;
+        Vector3 endPoint = TargetPlayer.transform.position;
+        startPoint.y = 2; endPoint.y = 2; // Set les y sur la meme hauteur
+        Vector3 direction = (endPoint - startPoint).normalized; // direction du rayon
+        float distance = Vector3.Distance(startPoint, endPoint); // distance entre les deux points
+
+        Ray ray = new Ray(startPoint, direction);
+        Debug.DrawRay(startPoint, direction * distance, Color.red);
+        RaycastHit[] hits = Physics.RaycastAll(ray, distance); // lancement du raycast
+
+        if(hits.Length > 0) {
+            foreach (RaycastHit hit in hits)
+            {
+                if (hit.collider.gameObject.CompareTag("Mur"))
+                {
+                    ChangeTarget(hit.collider.gameObject.GetComponent<Decalage>().GetTargetContour());
+                    return; // Mur change de target
+                }
+                if (hit.collider.gameObject.CompareTag("Player"))
+                {
+                    ChangeTarget(TargetPlayer); // Player ok
+                    return;
+                }
+            }
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        _procheMur = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        _procheMur = false;
     }
 
     public void ChangeTarget(GameObject[] listNewTarget)
@@ -58,7 +104,6 @@ public class MoveToTarget : MonoBehaviour
 
             foreach (RaycastHit hit in hits)
             {
-                Debug.Log($"{hit.collider.gameObject.name}");
                 if (hit.collider.gameObject.CompareTag("Mur"))
                 {
                     visible = false; break;
@@ -68,6 +113,11 @@ public class MoveToTarget : MonoBehaviour
                 listTransform.Add(g.transform);
         }
 
+        if (listTransform.Count == 0)
+        {
+            Target = null;
+            return;
+        }
 
         // Calcul la target la plus près du player
         List<float> targetToPlayerDistance = new List<float>();
@@ -79,7 +129,7 @@ public class MoveToTarget : MonoBehaviour
         float minDistance = targetToPlayerDistance.Min();
         int indiceMin = targetToPlayerDistance.IndexOf(minDistance);
         ChangeTarget(listTransform[indiceMin]);
-        Debug.Log($"Change target : {listTransform[indiceMin].name}");
+        //Debug.Log($"Change target : {listTransform[indiceMin].name}");
 
     }
 
