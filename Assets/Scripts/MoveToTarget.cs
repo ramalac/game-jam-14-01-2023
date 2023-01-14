@@ -42,6 +42,7 @@ public class MoveToTarget : MonoBehaviour
         //VelocityForce = _rb.velocity;
         VelocityForce = Direction * Speed;
         _rb.velocity = VelocityForce;
+        transform.LookAt(new Vector3(Target.position.x, 0,Target.position.z));  
     }
 
     private void CalculTarget()
