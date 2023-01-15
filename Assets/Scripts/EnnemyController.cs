@@ -5,9 +5,14 @@ using UnityEngine;
 public class EnnemyController : MonoBehaviour
 {
     public float MaxHealth;
-    
-    
+
+    private Transform EnnemyPosition;
     private float Health;
+
+    private void Awake()
+    {
+        EnnemyPosition = GetComponent<Transform>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -19,5 +24,19 @@ public class EnnemyController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Arrow"))
+        {
+            other.transform.SetParent(EnnemyPosition);
+
+        }
+    }
+
+    public void TakeDamage()
+    {
+
     }
 }
