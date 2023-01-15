@@ -80,7 +80,7 @@ public class WeatherElement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Arrow"))
         {
-            var typeWeather = other.gameObject.GetComponent<Arrow>().ArrowType;
+            var typeWeather = other.gameObject.GetComponent<Arrow>().TypeArrow;
             ActivationWeather(typeWeather);
         }
     }
