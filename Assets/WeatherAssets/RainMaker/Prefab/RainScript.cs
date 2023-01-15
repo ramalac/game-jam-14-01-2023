@@ -63,6 +63,11 @@ namespace DigitalRuby.RainMaker
             base.Start();
         }
 
+        private void OnEnable()
+        {
+            Start();
+        }
+
         protected override void Update()
         {
             base.Update();

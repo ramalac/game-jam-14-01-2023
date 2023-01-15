@@ -24,7 +24,7 @@ public class Cloud : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Arrow"))
         {
-            Debug.Log("trigger enter cloud par arrow");
+            //Debug.Log("trigger enter cloud par arrow");
             var arrowWeatherType = other.gameObject.GetComponent<Arrow>().TypeArrow;
             _weatherElement.ActivationWeather(arrowWeatherType);
         }

@@ -11,6 +11,7 @@ TagManager:
   - WeatherRain
   - Cloud
   - Arrow
+  - WeatherThunder
   layers:
   - Default
   - TransparentFX
