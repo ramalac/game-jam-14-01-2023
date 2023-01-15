@@ -262,6 +262,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2000
   Tip: {fileID: 8386148805111352677}
+  Texture:
+  - {fileID: 2100000, guid: 06f9357aa080a5949819170310899edd, type: 2}
+  - {fileID: 2100000, guid: 034533b646531f5458fda1e2fbbda859, type: 2}
+  - {fileID: 2100000, guid: fca6a85f2cb9a5c469487f6c4a950a8a, type: 2}
+  - {fileID: 2100000, guid: c2a30d5aa0653f94c8a47a191d59edce, type: 2}
+  TypeArrow: 0
 --- !u!54 &3544760493190169588
 Rigidbody:
   m_ObjectHideFlags: 0

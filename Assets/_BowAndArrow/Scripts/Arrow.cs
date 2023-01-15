@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 
+public enum TypeWeatherEnum { None, Rain, Snow, Thunder }
 public class Arrow : MonoBehaviour
 {
     public float Speed = 2000.0f;
     public Transform Tip = null;
-
+    public Material[] Texture;
+    private TypeWeatherEnum TypeArrow;
     private Rigidbody ArrowRigidbody = null;
     private bool IsStopped = true;
     private Vector3 LastPosition = Vector3.zero;
@@ -45,4 +47,14 @@ public class Arrow : MonoBehaviour
 
         Destroy(gameObject, 5.0f);
     }
+
+    public void ApplyType(TypeWeatherEnum CurrentType)
+    {
+        TypeArrow = CurrentType;
+        foreach (Renderer ArrowPart in gameObject.GetComponentsInChildren<Renderer>())
+        {
+            ArrowPart.material = Texture[((int)TypeArrow)];
+        }
+    }
+    
 }

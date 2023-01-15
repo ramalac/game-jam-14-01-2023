@@ -15,6 +15,7 @@ public class Bow : MonoBehaviour
     private Transform PullingHand = null;
     private Arrow CurrentArrow = null;
     private Animator Animation= null;
+    private TypeWeatherEnum CurrentArrowType = TypeWeatherEnum.None;
 
     private float PullValue = 0f;
 
@@ -56,6 +57,7 @@ public class Bow : MonoBehaviour
         GameObject arrowObject = Instantiate(ArrowPrefab, Socket);
         arrowObject.transform.localPosition = new Vector3(0, 0, 0.425f);
         arrowObject.transform.localEulerAngles = Vector3.zero;
+        arrowObject.GetComponent<Arrow>().ApplyType(CurrentArrowType);
         CurrentArrow = arrowObject.GetComponent<Arrow>();
     }
 
@@ -86,6 +88,14 @@ public class Bow : MonoBehaviour
     {
         CurrentArrow.Fire(PullValue);
         CurrentArrow = null;
+    }
+
+    public void ChangeType()
+    {
+        CurrentArrowType = (TypeWeatherEnum)(((int)CurrentArrowType + 1)%4);
+        if (CurrentArrow)
+            CurrentArrow.GetComponent<Arrow>().ApplyType(CurrentArrowType);
+        //Debug.Log("Je change le type");
     }
 
 }
