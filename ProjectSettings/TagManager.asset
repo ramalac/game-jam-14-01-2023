@@ -9,6 +9,8 @@ TagManager:
   - Spawn
   - Weather
   - WeatherRain
+  - Cloud
+  - Arrow
   layers:
   - Default
   - TransparentFX
