@@ -143,3 +143,16 @@ MonoBehaviour:
   VelocityForce: {x: 0, y: 0, z: 0}
   Direction: {x: 0, y: 0, z: 0}
   _procheMur: 0
+--- !u!114 &686806580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981029955030760712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc8a205a6588c8418e6f5704dadfe36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 15
