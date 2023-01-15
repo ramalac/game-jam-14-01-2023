@@ -10,7 +10,14 @@ public class WeatherElement : MonoBehaviour
 
     public List<Transform> ActiveWeather = new List<Transform>();
 
-    public bool WeatherActivation = false;
+    public float MaxTimeWeather;
+
+    float time;
+    public float TimeStartWeather;
+
+
+    public bool WeatherActive = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +43,16 @@ public class WeatherElement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ActivationWeather(WeatherActivation);
+        time += Time.deltaTime; // ajoute le temps écoulé depuis le dernier frame à la variable time
+
+        if (WeatherActive)
+        {
+            if (time >= TimeStartWeather + MaxTimeWeather) // si le temps écoulé est supérieur ou égal à l'intervalle de temps défini
+            {
+                DesactivationWeather();
+                WeatherActive = false;
+            }
+        }
     }
 
     /// <summary>
@@ -45,7 +61,7 @@ public class WeatherElement : MonoBehaviour
     /// <param name="typeWeatherArrow">Type de la flèche.</param>
     public void ActivationWeather(TypeWeatherEnum typeWeatherArrow)
     {
-        Debug.Log($"Activation weather{typeWeatherArrow.DisplayName()}");
+        Debug.Log($"Activation weather {typeWeatherArrow.DisplayName()}");
         foreach (Transform t in Weathers)
         {
             var typeWeather = t.GetComponent<Weather>().TypeWeather;
@@ -54,6 +70,18 @@ public class WeatherElement : MonoBehaviour
                 t.gameObject.SetActive(true); // Active la météo
                 ActiveWeather.Add(t); // Ajoute à la liste des météos active
             }
+        }
+        WeatherActive = true;
+        TimeStartWeather = Time.time;
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Arrow"))
+        {
+            var typeWeather = other.gameObject.GetComponent<Arrow>().ArrowType;
+            ActivationWeather(typeWeather);
         }
     }
 

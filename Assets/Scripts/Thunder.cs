@@ -7,8 +7,6 @@ public class Thunder : MonoBehaviour
     public Transform StarThunderTransform;
     public Transform EndThunderTransform;
 
-    public const TypeWeatherEnum TypeWeather = TypeWeatherEnum.Thunder;
-
     public Transform ThunderGestionTransform;
 
     public float LifeTime = 0.5f;
