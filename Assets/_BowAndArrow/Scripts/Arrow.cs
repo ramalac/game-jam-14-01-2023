@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-//public enum TypeWeatherEnum { None, Rain, Snow, Thunder }
 public class Arrow : MonoBehaviour
 {
     public float Speed = 2000.0f;

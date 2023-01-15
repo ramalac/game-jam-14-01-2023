@@ -11,11 +11,11 @@ public class Bow : MonoBehaviour
     public Transform Start_pos = null;
     public Transform End = null;
     public Transform Socket = null;
+    public TypeWeatherEnum CurrentArrowType = TypeWeatherEnum.None;
 
     private Transform PullingHand = null;
     private Arrow CurrentArrow = null;
     private Animator Animation= null;
-    private TypeWeatherEnum CurrentArrowType = TypeWeatherEnum.None;
 
     private float PullValue = 0f;
 
