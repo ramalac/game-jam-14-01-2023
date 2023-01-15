@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : MonoBehaviour
+public class EnnemyController : MonoBehaviour
 {
-
-    public TypeWeatherEnum ArrowType;
-    public int Test;
+    public float MaxHealth;
+    
+    
+    private float Health;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Health = MaxHealth;
     }
 
     // Update is called once per frame

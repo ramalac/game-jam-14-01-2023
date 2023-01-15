@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 
-public enum TypeWeatherEnum { None, Rain, Snow, Thunder }
 public class Arrow : MonoBehaviour
 {
     public float Speed = 2000.0f;
     public Transform Tip = null;
     public Material[] Texture;
-    private TypeWeatherEnum TypeArrow;
+    public TypeWeatherEnum TypeArrow;
     private Rigidbody ArrowRigidbody = null;
     private bool IsStopped = true;
     private Vector3 LastPosition = Vector3.zero;

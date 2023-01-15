@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum TypeWeatherEnum { Rain, Snow, Thunder }
+public enum TypeWeatherEnum { None, Rain, Snow, Thunder }
 
 
 public class GestionWeatherElements : MonoBehaviour
