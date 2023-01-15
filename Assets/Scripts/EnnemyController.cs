@@ -26,17 +26,23 @@ public class EnnemyController : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Arrow"))
+        //Debug.Log("Je suis touché" + collision);
+        if (collision.gameObject.CompareTag("Arrow"))
         {
-            other.transform.SetParent(EnnemyPosition);
-
-        }
+            //Debug.Log("OMG J'AI MAL!!!!!");
+            //collision.transform.SetParent(EnnemyPosition);
+            TakeDamage(10);
+        } 
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float quantity)
     {
-
+        Health -= quantity;
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
