@@ -34,7 +34,7 @@ public class GestionSpawner : MonoBehaviour
 
             int typeEnemy = Random.Range(0, PrefabEnemy.Length);
             int spawn = Random.Range(0, Spawners.Length);
-            Instantiate(PrefabEnemy[typeEnemy], Spawners[spawn],false).SetActive(true);
+            Instantiate(PrefabEnemy[typeEnemy], Spawners[spawn].position, Quaternion.identity).SetActive(true);
             ++NbEnemy;
             Debug.Log("Spawn");
         }

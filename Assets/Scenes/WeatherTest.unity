@@ -743,15 +743,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 647901449, guid: fde8a80119487684bb33010c60571ab0, type: 3}
-      propertyPath: TypeWeather
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5065072817681475968, guid: fde8a80119487684bb33010c60571ab0,
-        type: 3}
-      propertyPath: TypeWeather
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5065072818038935212, guid: fde8a80119487684bb33010c60571ab0,
         type: 3}
       propertyPath: m_RootOrder
