@@ -62,7 +62,7 @@ public class Bow : MonoBehaviour
     public void Pull(Transform hand)
     {
         float distance = Vector3.Distance(hand.position, Start_pos.position);
-        if (distance < GrabThreshold)
+        if (distance > GrabThreshold)
             return;
 
         PullingHand = hand;
